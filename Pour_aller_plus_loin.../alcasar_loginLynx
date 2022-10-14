@@ -1,0 +1,62 @@
+#!/bin/bash
+
+rm login.txt
+script=login.txt
+
+#Argument to username field
+userName="$1"
+
+#Argument to password field
+userPasswd="$2"
+
+#Target website
+website=https://alcasar.laplateforme.io/status.php
+
+###########################
+lenName=${#userName}      #
+lenPasswd=${#userPasswd}  #
+###########################
+
+#This tab key is to reach the first 'text-field' of the website virtually
+echo 'key <tab>' >> $script
+echo 'key <tab>' >> $script
+
+#This helps to click on the place that we want
+echo 'key ^J' >> $script
+echo 'key ^J' >> $script
+
+#This snippet is to enter the 'username'(the first text-field) into the first text field
+for i in `echo $userName|fold -w1` 
+do
+    echo 'key '$i >> $script
+done
+
+#This tab key is to reach the next text key
+echo 'key <tab>' >> $script
+
+#Similarly ,this snippet is to enter the 'password'(the second text-field) into the first text field
+for i in `echo $userPasswd|fold -w1` 
+do
+    echo 'key '$i >> $script
+done
+
+#This tab key is to reach the 'submit' button
+echo 'key <tab>' >> $script
+
+#This helps to click the 'submit' button
+echo 'key ^J' >> $script
+
+#This tab key is to get out the auth field
+echo 'key <tab>' >> $script
+echo 'key <tab>' >> $script
+echo 'key <tab>' >> $script
+
+#These are used to Quit the command prompt.
+echo 'key Q' >> $script
+echo 'key y' >> $script
+
+#Don't see my password ! in my PROMPT
+clear
+
+#Use of 'lynx' here
+lynx $website -accept_all_cookies -cmd_script=login.txt

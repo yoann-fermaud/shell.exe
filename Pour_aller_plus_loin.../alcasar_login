@@ -1,0 +1,15 @@
+#!/bin/bash
+
+script=login.txt
+
+#Argument to username field
+userName="$1"
+
+#Argument to password field
+userPasswd="$2"
+
+#Target website
+website=https://alcasar.laplateforme.io/status.php
+
+challenge=$(curl -i https://alcasar.laplateforme.io/intercept.php -L  | grep -o -P '(?<=challenge=).*(?=&called)')
+curl -H "Content-Type: multipart/form-data" -X POST -F challenge=$challenge -F username=$userName -F password=$userPasswd -F button=Authentication https://alcasar.laplateforme.io/intercept.php -L
