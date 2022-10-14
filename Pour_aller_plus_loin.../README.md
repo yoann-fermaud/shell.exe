@@ -13,11 +13,11 @@
 ```
 **NB** : argument `$1 for email` and `$2 for password` 
 
-This is a bash script that permit you to enter in alcasar without your browser or anything else.
+This is a bash script that permits you to enter in alcasar without your browser or anything else.
 
 ### Method With Lynx
 
-This bash script uses `lynx`. So, you need to install `lynx` on your on your linux system.
+This bash script uses `lynx`. So, you need to install `lynx` on your linux system.
 
 * Open your command prompt
 * Then enter the following command
